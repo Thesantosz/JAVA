@@ -13,13 +13,12 @@ public interface Habilidades {
     public int Dano();
     public int Vida();
     public int Mana();
-    public int Agilidade();
          
-    public String Atirar();
+    public String Atacar();
     
-    public String LancarGranada();
+    public double golpeEspecial();
     
-    public String UsarBandagem();
+    public int UsarBandagem();
     
     public String Fugir();
     
