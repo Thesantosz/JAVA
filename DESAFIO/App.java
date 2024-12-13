@@ -22,14 +22,14 @@ public class App{
          System.out.println(meuMenu.menu);
          int escolha = scanner.nextInt();
             
-            System.out.println("Escolha o nome do seu personagem");
+            System.out.println("Escolha o nome do seu personagem\n");
             String nomePersonagem = scanner.nextLine();
     
             System.out.println("Muito prazer " + nomePersonagem + ", Bem vindo ao "
                     + ""
                     + "AVENTURAS AVENTURADAS."
                     + ""
-                    + "SUA JORNADA COMEÇA AGORA!");
+                    + "SUA JORNADA COMEÇA AGORA! \n");
             
            Habilidades personagemEscolhido = null;
            
@@ -37,29 +37,42 @@ public class App{
                
                  case 1: 
                  personagemEscolhido = paladino;
-                 System.out.println("Sua escolha foi o Paladino!");
-                 System.out.println(historia.inicio());  
+                 System.out.println("Sua escolha foi o Paladino\n"
+                         + ""
+                         + "SUA JORNADA COMO Sir Tharion, o Paladino Azarado COMECA AGORA\n" +
+                         historia.introducao()
+                         );
                  break;
                 
                  case 2:  
                  personagemEscolhido = barbaro;
-                 System.out.println("Sua escolha foi o Barbaro");
+                 System.out.println("Sua escolha foi o Barbaro\n"
+                         + ""
+                         + "SUA JORNADA COMO Grug, o Bárbaro Gourmet COMECA AGORA\n" +
+                         historia.introducao()
+                         );
+
                  break;
                  
                  case 3:
                  personagemEscolhido = feiticeiro;
-                 System.out.println("Sua escolha foi o Feiticeiro"
+                 System.out.println("Sua escolha foi a Feiticeiro\n"
                          + ""
-                         + "SUA JORNADA COMEÇA AGORA");
+                         + "SUA JORNADA COMO Mirela, a Feiticeira Sarcástica COMECA AGORA\n" +
+                         historia.introducao()
+                         );
+                               
+                 
                  break;
                  
-                 default: System.out.println("Escolha alguma opçao válida!!!");
+                 default: System.out.println("Escolha alguma opçao válida!!!\n");
            }
            
-           System.out.println("Que caminho deseja escolher?"
-                   + ""
-                   + "1.Direita"
-                   + "2.Esquerda");
+           System.out.println("Você deseja enfrentar o inimigo ou correr?"
+                   + "\n"
+                   + "1.Enfrentar \n" 
+                   + "2.Correr\n"
+           );
             String caminho = scanner.nextLine();
             
             switch(caminho){
