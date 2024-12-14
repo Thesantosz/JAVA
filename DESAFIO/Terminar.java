@@ -8,12 +8,6 @@ package DESAFIO;
  *
  * @author LEANDROHENRIQUESANTO
  */
-public class Bandagem {
+public class Terminar {
     
-    public int quantidade(){
-        
-        int quantidade = 1;
-        return
-                quantidade;
-    };
 }

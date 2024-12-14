@@ -10,4 +10,10 @@ package DESAFIO;
  */
 public class golpeEspecial {
     
+    public int quantidade(){
+         int quantidade = 1;
+                 
+        return
+   quantidade;
+};
 }

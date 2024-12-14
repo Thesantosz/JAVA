@@ -13,5 +13,5 @@ public class Inimigo2 {
     
     String nome = "Gigante do Sul";
     int dano = 7;
-    int vida = 24;
+    int vida = 240;
 }

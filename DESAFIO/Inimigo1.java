@@ -12,6 +12,6 @@ public class Inimigo1 {
     
     String nome = "Zumbi Louco";
     int dano = 4;
-    int vida = 15;
+    int vida = 150;
         
 };      

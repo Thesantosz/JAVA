@@ -21,7 +21,7 @@ public class Paladino implements Habilidades{
       @Override
     public int Vida(){
         
-        int vida = (Sorteio.numeroAleatorio() + Sorteio.numeroAleatorio());
+        int vida = ((Sorteio.numeroAleatorio() + Sorteio.numeroAleatorio()) * 3);
        return
                vida;
     }
@@ -51,26 +51,29 @@ public class Paladino implements Habilidades{
     };
     
     @Override
-    public double  golpeEspecial(){
-        
-        String mensagem = "VOCE DEU O GOLPE ESPECIAL";
-        System.out.println(mensagem);
-         int danoEspecial = 20;
+    public int  golpeEspecial(){
+        int danoEspecial = 20;
+        String mensagem1 = "VOCE DEU O GOLPE ESPECIAL";
+    System.out.println(mensagem1);
+    
          return 
                  danoEspecial;
-        
-    };
+        }
+       
+    
     
     @Override
     public int UsarBandagem(){
         
     int rilar = Vida() + 5;
-  String mensagem = ("Voce recuperou 5 de vida e ficou com " );
+  String mensagem = ("Voce recuperou 5 de vida e ficou com " + Vida());
   System.out.println(mensagem);
     return
            rilar;
-    };
     
-}
+    }};
+    
+
+
     
 

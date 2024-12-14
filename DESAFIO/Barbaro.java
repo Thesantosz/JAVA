@@ -51,7 +51,7 @@ public class Barbaro implements Habilidades{
     };
     
     @Override
-    public double  golpeEspecial(){
+    public int golpeEspecial(){
         
         String mensagem = "VOCE DEU O GOLPE ESPECIAL";
         System.out.println(mensagem);
