@@ -9,11 +9,12 @@ package DESAFIO;
  * @author LEANDROHENRIQUESANTO
  */
 public class Bandagem {
-    
-    public int quantidade(){
-        
-        int quantidade = 1;
-        return
-                quantidade;
-    };
+
+      int quantidadeBandagem = 2;
+     static int vidaBandagem = 15;
+            
+public int BandagemUsada() {
+    quantidadeBandagem = quantidadeBandagem - 1; 
+    return quantidadeBandagem;
+}
 }

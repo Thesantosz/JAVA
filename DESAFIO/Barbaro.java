@@ -11,10 +11,9 @@ package DESAFIO;
 public class Barbaro implements Habilidades{
     
     @Override
-    public String Atacar(){
+    public String Atacar(){  
         
-        String mensagem = "Você irá atacar seu oponente";
-        
+        String mensagem = "Você atacou seu oponente";
         return
                 mensagem;
     };
@@ -51,25 +50,21 @@ public class Barbaro implements Habilidades{
     };
     
     @Override
-    public int golpeEspecial(){
+    public String golpeEspecial(){
         
-        String mensagem = "VOCE DEU O GOLPE ESPECIAL";
-        System.out.println(mensagem);
-         int danoEspecial = 20;
-         return 
-                 danoEspecial;
+        String mensagem2E = "Voce usou o golpe especial!";
+    return mensagem2E;
+
         
     };
     
     @Override
-    public int UsarBandagem(){
+    public String UsarBandagem(){
         
-    int rilar = Vida() + 5;
-  String mensagem = ("Voce recuperou 5 de vida e ficou com " );
-  System.out.println(mensagem);
-    return
-           rilar;
+    String mensagem3E = "Você usou uma bandagem! ";
+    return mensagem3E;
     };
     
-}
 
+
+}

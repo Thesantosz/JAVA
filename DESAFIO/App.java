@@ -18,20 +18,34 @@ public class App{
             Menu meuMenu = new Menu();
             historia historia = new historia();
             golpeEspecial quantidadeGolpe = new golpeEspecial();
-            Bandagem quantidadeBandagem = new Bandagem();
+            Bandagem bandagem = new Bandagem();
             
-         System.out.println(historia.herois());
-         System.out.println(meuMenu.menu);
-         int escolha = scanner.nextInt();
-            
-            System.out.println("Escolha o nome do seu personagem\n");
+            System.out.println("Qual é seu nome? \n");
             String nomePersonagem = scanner.nextLine();
     
             System.out.println("Muito prazer " + nomePersonagem + ", Bem vindo ao "
                     + ""
                     + "AVENTURAS AVENTURADAS."
                     + ""
-                    + "SUA JORNADA COMEÇA AGORA! \n");
+                    + "SUA JORNADA COMECA AGORA! \n");
+            
+         System.out.println("");
+           System.out.println("Clique enter para comecar a historia!");
+           String enterhistoria = scanner.nextLine();
+           System.out.println(historia.introducao());
+            
+            System.out.println("");
+            System.out.println("Esta na hora de escolher sua classe, irei dar uma breve intruducao para cada uma!");
+            System.out.println("Clique enter para escolher!");
+            String enter = scanner.nextLine();
+            System.out.println("");
+                        
+        System.out.println(historia.herois());
+        System.out.println("");
+        System.out.println("\n "
+                + "Escolha sua classe: \n");
+        int escolha = scanner.nextInt();
+        
             
            Habilidades personagemEscolhido = null;
            
@@ -39,19 +53,20 @@ public class App{
                
                  case 1: 
                  personagemEscolhido = paladino;
-                 System.out.println("Sua escolha foi o Paladino\n"
-                         + ""
-                         + "SUA JORNADA COMO Sir Tharion, o Paladino Azarado COMECA AGORA\n" +
-                         historia.introducao()
-                         );
+                 System.out.println("""
+                                    Sua escolha foi o Paladino
+                                    
+                                    --Sir Tharion, o Paladino Azarado --
+
+                                    """);
                  break;
                 
                  case 2:  
                  personagemEscolhido = barbaro;
                  System.out.println("Sua escolha foi o Barbaro\n"
                          + ""
-                         + "SUA JORNADA COMO Grug, o Bárbaro Gourmet COMECA AGORA\n" +
-                         historia.introducao()
+                         + "--Grug, o Bárbaro Gourmet--\n"
+                          
                          );
 
                  break;
@@ -60,36 +75,136 @@ public class App{
                  personagemEscolhido = feiticeiro;
                  System.out.println("Sua escolha foi a Feiticeiro\n"
                          + ""
-                         + "SUA JORNADA COMO Mirela, a Feiticeira Sarcástica COMECA AGORA\n" +
-                         historia.introducao()
+                         + "--Mirela, a Feiticeira Sarcástica--\n"
                          );
                                
                  
                  break;
                  
-                 default: System.out.println("Escolha alguma opçao válida!!!\n");
+                 default: System.out.println("Como opcao invalida, eu mesmo irei escolher seu personagem, que sera o Barbaro.\n");
+               //fazer um sorteio para escolher um personagem aleatorio caso escolha alguma opçao invalida!
+                 personagemEscolhido = barbaro;
            }
            
-           System.out.println("Você deseja ir para direita ou esquerda?"
-                   + "\n"
-                   + "1.esquerda \n" 
-                   + "2.direitar\n"
-           );
-            String caminho = scanner.nextLine();
-            
-            int caminhoEsc = 0;
-            
-            switch(caminho){
+            int numero1 = 0;
+         int numero2 = 0;
+         int numero3 = 0;
+         int numero4 = 0;
+
+        if (personagemEscolhido instanceof Barbaro) {
+            numero1 = 3;
+            numero2 = 4;
+            numero3 = 2;
+           
+        } else if (personagemEscolhido instanceof Paladino) {
+            numero1 = 4;
+            numero2 = 2;
+            numero3 = 1;
+
+        } else if (personagemEscolhido instanceof Feiticeiro) {
+            numero1 = 2;
+            numero2 = 1;
+            numero3 = 3;
+ 
+        } 
+ 
+        String palavra1 = (numero1 == 1) ? "dado" : "dados";
+        String palavra2 = (numero2 == 1) ? "dado" : "dados";
+        String palavra3 = (numero3 == 1) ? "dado" : "dados";
+        
+    
+        System.out.println("");
+        System.out.println("Agora defina seus atributos rolando os dados!");
+        
+        System.out.println("Voce tem " + numero1 +" "+ palavra1 + " para o dano");
+        Scanner scanner1 = new Scanner(System.in);
+        int ArmazenaDano = personagemEscolhido.Dano();
+        
+        System.out.println("Voce quer rolar os dados? (s/n): ");
+        String resposta1 = scanner1.nextLine();
+        if (resposta1.equals("s")) {
+           System.out.println("Dano: " + ArmazenaDano);
+        } else {
+            System.out.println("Essa opcao esta invalida, irei rolar os dados por voce!");
+            System.out.println("Dano: " + ArmazenaDano);
+        }
+        System.out.println("");
+         /*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+        
+          System.out.println("Voce tem " +numero2 +" "+palavra2 + " para a vida");
+          Scanner scanner2 = new Scanner(System.in);
+        int ArmazenaVida = personagemEscolhido.Vida();
+          
+        System.out.println("Voce quer rolar os dados? (s/n): ");
+        String resposta2 = scanner2.nextLine();
+        if (resposta2.equals("s")) {
+           System.out.println("Vida: " + ArmazenaVida);
+        } else {
+            System.out.println("Essa opcao nao esta valida, irei rolar os dados por voce!");
+            System.out.println("Vida: " + ArmazenaVida);
+        }
+        System.out.println("");
+        /*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+        
+        
+        System.out.println("Voce tem " + numero3 +" "+ palavra3 + " para a mana");
+        Scanner scanner3 = new Scanner(System.in);
+        int ArmazenaMana = personagemEscolhido.Mana();
+        
+        System.out.println("Voce quer rolar os dados? (s/n): ");
+        String resposta3 = scanner3.nextLine();
+        if (resposta3.equals("s")) {
+           System.out.println("Mana: " + ArmazenaMana);
+        } else {
+            System.out.println("Esta opçao eesta invalida, irei rolar os dados por voce!");
+             System.out.println("Mana: " + ArmazenaMana);
+        }
+       System.out.println("");
+        /*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+        
+        System.out.println("Aqui estao seus atributos:");
+        System.out.println("Nome: " + nomePersonagem);
+        System.out.println("Dano: " + ArmazenaDano);
+        System.out.println("Vida: " + ArmazenaVida);
+        System.out.println("Mana: " + ArmazenaMana);
+       
+        
+           System.out.println("Você embarcou em sua aventura, mas possui uma duvida: qual lado seguir?");
+System.out.println("1. Esquerda");
+System.out.println("2. Direita");
+
+int caminhoEsc = 0; // Inicializamos com um valor padrão
+boolean escolhaValida = false;
+
+while (escolhaValida != true) {
+ 
+    String caminho = scanner.nextLine(); // Leia como String para evitar erros de tipo
+    
+switch(caminho){
+    case "1":
+        caminhoEsc = 1;
+        escolhaValida = true;
+    break;
+    
+    case "2":
+        caminhoEsc = 2;
+        escolhaValida = true;
+        break;
                 
-                case "1": 
-                    caminhoEsc = 1;
-                    break;
-                    
-                case "2":
-                     caminhoEsc = 2;
-                 break;
-                 
-                 }
+                default:
+        System.out.println("Por favor, escolha 1 ou 2.");
+        break;
+    }
+}
+
+// Processa o caminho escolhido
+if (caminhoEsc == 1) {
+    System.out.println("Voce escolheu o caminho da esquerda!");
+    // Continue a lógica para o caminho da esquerda...
+} else if (caminhoEsc == 2) {
+    System.out.println("Voce escolheu o caminho da direita!");
+    // Continue a lógica para o caminho da direita...
+}
 
         //--------------------------------------------------------------------------------------------------------------------------------------------
         
@@ -97,7 +212,7 @@ public class App{
 
             System.out.println("");
            
-        while( inimigo1.vida > 0 && personagemEscolhido.Vida() > 0){
+        while( inimigo1.vida > 0 && ArmazenaVida > 0){
             
             System.out.println("");
             System.out.println("Escolha uma uma das opcoes de ataque!");
@@ -106,86 +221,88 @@ public class App{
             System.out.println("3. Usar Bandagem");
             System.out.println("4. Fugir");
             int escolha1 = scanner.nextInt();
+            
+            int danoAtacar;
+            int danoBandagem;
+            int danoEspecial;
+            int danoInimigo1;
+            int danoInimigoFinal;
+            int armazenaVida;
+            int armazenaDano;
+            
             
             
              switch (escolha1) { //escolha do menu de habilidades
                  
                 case 1: 
-                    if (personagemEscolhido.Vida() > 0){
-                    personagemEscolhido.Atacar();
+                    if (ArmazenaMana > 0){
                     System.out.println("");
             
-            int danoArmazenado = personagemEscolhido.Dano(); //dano que seu personagem causou no inimigo
+             personagemEscolhido.Atacar();
+            System.out.println("");
+            danoAtacar = inimigo1.vida - ArmazenaDano;
+            inimigo1.vida = danoAtacar;
+            System.out.println("O inimigo recebeu " + ArmazenaDano + " de dano e esta com " + inimigo1.vida+ " de vida!"); // Metodo de Atacar
             
-            int novaVidaInimigo = inimigo1.vida - danoArmazenado; 
-            inimigo1.vida = novaVidaInimigo;
-            
-            System.out.println("O inimigo recebeu " + danoArmazenado + " de dano e esta com " + inimigo1.vida + " de vida!");
-            
-           int manaArmazenada = personagemEscolhido.Mana() - 1; // retira uma mana
-            
-            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+           ArmazenaMana = ArmazenaMana - 1; // retira a energia do personagem apos o ataque
+           
+        
            
             if (inimigo1.vida > 0 ){
             
-                int suaVidaArmazena = personagemEscolhido.Vida();
-                int danoInimigo = personagemEscolhido.Vida() - inimigo1.dano;
-                suaVidaArmazena = danoInimigo;
+            danoInimigo1 = ArmazenaVida - inimigo1.dano;
+            ArmazenaVida = danoInimigo1;
             System.out.println("");
             System.out.println("O seu inimigo te atacou e causou " + inimigo1.dano + " de dano!");
-            System.out.println("Agora voce esta com " + suaVidaArmazena + " de vida!");
+            System.out.println("Agora voce esta com " + ArmazenaVida + " de vida!");
             System.out.println("");
             }
             } else {
-                    System.out.println("Voce não tem mais energia!");
+                    System.out.println("Voce nao tem mais energia!");
                     }
             break;
             
-                case 2:
-                    if (quantidadeGolpe.quantidade() > 0) {
-                    personagemEscolhido.golpeEspecial();
-                    System.out.println("Você lancou o golpe especial e retirou" + personagemEscolhido.golpeEspecial()+ "de dano.");
-                    System.out.println("\n");
-                    
-            int novaVidaInimigo1 = inimigo1.vida - personagemEscolhido.golpeEspecial();
-            inimigo1.vida = novaVidaInimigo1;
-            System.out.println("O inimigo recebeu " + personagemEscolhido.golpeEspecial() + " de dano e esta com " + inimigo1.vida + " de vida!");
-                        
-            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            if (inimigo1.vida > 0 ){
-                
-        int suaVidaArmazena = personagemEscolhido.Vida();
+              //---------------------------------------------------------------------------------------------------------------------------
             
-            int novaVida =  suaVidaArmazena - inimigo1.dano;
-            suaVidaArmazena = novaVida;
+                case 2:
+                    if(quantidadeGolpe.quantidadeGP > 0){
+                     personagemEscolhido.golpeEspecial();
+                    quantidadeGolpe.usarGolpe();
+                    System.out.println("");
+            int danoGP = inimigo1.vida - quantidadeGolpe.danoEspecial;
+            inimigo1.vida = danoGP;
+            System.out.println("O inimigo recebeu " + quantidadeGolpe.danoEspecial + " de dano e esta com " + inimigo1.vida + " de vida!");
+                             
+            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+         if (inimigo1.vida > 0 ){   
+            danoInimigo1 = ArmazenaVida - inimigo1.dano;
+            ArmazenaVida = danoInimigo1;
             System.out.println("");
             System.out.println("O seu inimigo te atacou e causou " + inimigo1.dano + " de dano!");
-            System.out.println("Agora voce esta com " + novaVida + " de vida!");
+            System.out.println("Agora voce esta com " + ArmazenaVida + " de vida!");
             System.out.println("");
             }
                     } else {
                     System.out.println("Voce nao tem mais golpe especial!");
                     }
                     break;
-                    
+        
+               //---------------------------------------------------------------------------------------------------------------------------
                 case 3:
-                     if (quantidadeBandagem.quantidade() > 0) {
-                    
-                         int suaVidaArmazenada = personagemEscolhido.Vida();
-                         System.out.println("Você usou a Bandagem!\n");
-                         
-            
-            int novaVida = suaVidaArmazenada + personagemEscolhido.UsarBandagem();
-            int suaVidaArmazena = novaVida;
-            System.out.println("Voce recebeu mais " + personagemEscolhido.UsarBandagem() + " de vida!");
-            System.out.println("Agora voce esta com " + suaVidaArmazena + " de vida!");
+                     if (bandagem.quantidadeBandagem > 0) {
+                    personagemEscolhido.UsarBandagem(); //mensagem
+                    bandagem.BandagemUsada(); //diminui a quantidade
+            danoBandagem = ArmazenaVida + bandagem.vidaBandagem; //cura a vida
+            ArmazenaVida = danoBandagem; //nova vida
+            System.out.println("Voce recebeu mais " + 15 + " de vida!");
+            System.out.println("Agora voce esta com " + ArmazenaVida + " de vida!");
             
             if (inimigo1.vida > 0 ){
-            int vidaNova = suaVidaArmazena - inimigo1.dano;
-            suaVidaArmazena = vidaNova;
+            danoInimigo1 = ArmazenaVida - inimigo1.dano;
+            ArmazenaVida = danoInimigo1;
             System.out.println("");
             System.out.println("O seu inimigo te atacou e causou " + inimigo1.dano + " de dano!");
-            System.out.println("Agora voce esta com " + vidaNova + " de vida!");
+            System.out.println("Agora voce esta com " + ArmazenaVida + " de vida!");
             System.out.println("");
             }
                     } else {
@@ -193,146 +310,28 @@ public class App{
                     }
                     break;
                     
+                    
                 case 4:
                     personagemEscolhido.Fugir();
-                    System.out.println("Voce nao conseguiu fugir e acabou morrendo!");
-                   int novaVida = personagemEscolhido.Vida() - 300;
+                    System.out.println("Voce nao conseguiu fugir e acabou sendo ferido!");
+                   
+                    if (inimigo1.vida > 0 ){
+            danoInimigo1 = ArmazenaVida - inimigo1.dano;
+            ArmazenaVida = danoInimigo1;
+            System.out.println("");
+            System.out.println("O seu inimigo te atacou e causou " + inimigo1.dano + " de dano!");
+            System.out.println("Agora voce esta com " + ArmazenaVida + " de vida!");
+            System.out.println("");
+            }
                     break;
                     
                     default:
                     System.out.println("Opcao invalida.");
                     break;
                  }
- break;
-        }
-                 }
-           //-----------------------------------------------------------------------------------------------------------------------------
-           
-        else {
-                
-while(inimigo1.vida > 0 && personagemEscolhido.Vida() > 0){
-            
-            
-            System.out.println("");
-            System.out.println("Escolha uma uma das opcoes de ataque!");
-            System.out.println("1. Atacar");
-            System.out.println("2. Golpe Especial");
-            System.out.println("3. Usar Bandagem");
-            System.out.println("4. Fugir");
-            int escolha1 = scanner.nextInt();
-            
-             switch (escolha1) {
-                case 1: 
-                    if (personagemEscolhido.Vida() > 0){
-            personagemEscolhido.Atacar();
-            System.out.println("");
-            
-            int danoArmazenado = personagemEscolhido.Dano();
-            
-            int novaVidaInimigo = inimigo2.vida - danoArmazenado;
-            inimigo2.vida = novaVidaInimigo;
-            
-            System.out.println("O inimigo recebeu " + danoArmazenado + " de dano e esta com " + inimigo2.vida + " de vida!");
-            
-           int manaArmazenada = personagemEscolhido.Mana() - 1; // retira uma mana
-            
-            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            if (inimigo2.vida > 0 ){
-            
-                int suaVidaArmazena = personagemEscolhido.Vida();
-                int danoInimigo = personagemEscolhido.Vida() - inimigo2.dano;
-            suaVidaArmazena = danoInimigo;
-            System.out.println("");
-            System.out.println("O seu inimigo te atacou e causou " + inimigo2.dano + " de dano!");
-            System.out.println("Agora voce esta com " + suaVidaArmazena + " de vida!");
-            System.out.println("");
-            }
-                    } else {
-                    System.out.println("Voce não tem mais energia!");
-                    }
-            break;
-            
-                case 2:
-                    if (quantidadeGolpe.quantidade() > 0) {
-                    personagemEscolhido.golpeEspecial();
-                    System.out.println("Você lancou o golpe especial e retirou" + personagemEscolhido.golpeEspecial()+ "de dano.");
-                    System.out.println("\n");
-                    
-            int novaVidaInimigo2 = inimigo2.vida - personagemEscolhido.golpeEspecial();
-            inimigo2.vida = novaVidaInimigo2;
-            System.out.println("O inimigo recebeu " + personagemEscolhido.golpeEspecial() + " de dano e esta com " + inimigo2.vida + " de vida!");
-                        
-            //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            if (inimigo2.vida > 0 ){
-                
-        int suaVidaArmazena = personagemEscolhido.Vida();
-            
-            int novaVida =  suaVidaArmazena - inimigo2.dano;
-            suaVidaArmazena = novaVida;
-            System.out.println("");
-            System.out.println("O seu inimigo te atacou e causou " + inimigo2.dano + " de dano!");
-            System.out.println("Agora voce esta com " + novaVida + " de vida!");
-            System.out.println("");
-            }
-                    } else {
-                    System.out.println("Voce nao tem mais golpe especial!");
-                    }
-                    break;
-                    
-                case 3:
-                     if (quantidadeBandagem.quantidade() > 0) {
-                    
-                         int suaVidaArmazenada = personagemEscolhido.Vida();
-                         System.out.println("Você usou a Bandagem!\n");
-                         
-            
-            int novaVida = suaVidaArmazenada + personagemEscolhido.UsarBandagem();
-            int suaVidaArmazena = novaVida;
-            System.out.println("Voce recebeu mais " + personagemEscolhido.UsarBandagem() + " de vida!");
-            System.out.println("Agora voce esta com " + suaVidaArmazena + " de vida!");
-            
-            if (inimigo2.vida > 0 ){
-            int vidaNova = suaVidaArmazena - inimigo2.dano;
-            suaVidaArmazena = vidaNova;
-            System.out.println("");
-            System.out.println("O seu inimigo te atacou e causou " + inimigo2.dano + " de dano!");
-            System.out.println("Agora voce esta com " + vidaNova + " de vida!");
-            System.out.println("");
-            }
-                    } else {
-                    System.out.println("Voce nao tem mais bandagens!");
-                    }
-                    break;
-                    
-                case 4:
-                    personagemEscolhido.Fugir();
-                    System.out.println("Voce nao conseguiu fugir e acabou morrendo!");
-                   int morte = personagemEscolhido.Vida() - 300;
-                    break;
-                    
-                    default:
-                    System.out.println("Opcao invalida.");
-                    break;
-                 }
-                    
-                  break;
-           
-            }
-                }
-    }
-}
-           
-           
-                        
-                        
-            
-                 
 
-            
-            
-    
-   
-    
-    
-    
-    
+        }
+       }
+    }}
+
+  

@@ -51,29 +51,25 @@ public class Paladino implements Habilidades{
     };
     
     @Override
-    public int  golpeEspecial(){
-        int danoEspecial = 20;
-        String mensagem1 = "VOCE DEU O GOLPE ESPECIAL";
-    System.out.println(mensagem1);
-    
-         return 
-                 danoEspecial;
+    public String  golpeEspecial(){
+        String mensagem2AT = "Você lançou uma granada no seu inimigo! ";
+    return mensagem2AT;
         }
        
     
     
     @Override
-    public int UsarBandagem(){
+    public String UsarBandagem(){
         
-    int rilar = Vida() + 5;
-  String mensagem = ("Voce recuperou 5 de vida e ficou com " + Vida());
-  System.out.println(mensagem);
-    return
-           rilar;
+    String mensagem3AT = "Você usou uma bandagem! ";
+    return mensagem3AT;
     
-    }};
+    }
+
+};
     
 
 
     
+
 

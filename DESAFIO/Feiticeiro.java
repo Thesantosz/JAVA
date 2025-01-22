@@ -10,26 +10,27 @@ package DESAFIO;
  */
 public class Feiticeiro implements Habilidades{
     
+    @Override
      public int Dano(){
           
          int dano = (Sorteio.numeroAleatorio() + Sorteio.numeroAleatorio() +  Sorteio.numeroAleatorio()); 
          return 
-                 dano;
+         dano;
       }
      
       @Override
     public int Vida(){
         
-        int vida = (Sorteio.numeroAleatorio() + Sorteio.numeroAleatorio());
+       int vida = (Sorteio.numeroAleatorio() + Sorteio.numeroAleatorio());
        return
-               vida;
+       vida;
     }
         
     @Override
     public int Mana(){
         int mana = (Sorteio.numeroAleatorio() + Sorteio.numeroAleatorio());
         return 
-                mana;
+    mana;
     };
     
     @Override
@@ -50,26 +51,21 @@ public class Feiticeiro implements Habilidades{
     };
         
         @Override
-    public int golpeEspecial(){
+    public String golpeEspecial(){
         
-        String mensagem = "VOCE DEU O GOLPE ESPECIAL";
-        System.out.println(mensagem);
-         int danoEspecial = 20;
-         return 
-                 danoEspecial;
+        String mensagem2AT = "Você lançou o golpe especial no seu inimigo! ";
+    return mensagem2AT;
         
     };
     
     @Override
-    public int UsarBandagem(){
+    public String UsarBandagem(){
         
-    int rilar = Vida() + 5;
-  String mensagem = ("Voce recuperou 5 de vida e ficou com " );
-  System.out.println(mensagem);
-    return
-           rilar;
+    String mensagem3AT = "Você usou uma bandagem! ";
+    return mensagem3AT;
     };
     
+
 }
     
     

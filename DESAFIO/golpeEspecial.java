@@ -10,10 +10,11 @@ package DESAFIO;
  */
 public class golpeEspecial {
     
-    public int quantidade(){
-         int quantidade = 1;
-                 
-        return
-   quantidade;
+    int quantidadeGP = 1;
+    static int danoEspecial = 15;
+    
+    public int usarGolpe() {
+    quantidadeGP = quantidadeGP - 1; 
+    return quantidadeGP;
 };
 }

@@ -16,9 +16,10 @@ public interface Habilidades {
          
     public String Atacar();
     
-    public int golpeEspecial();
+    public String golpeEspecial();
     
-    public int UsarBandagem();
+    public String UsarBandagem();
+
     
     public String Fugir();
     
