@@ -11,6 +11,12 @@ package DESAFIO;
 public class Boss {
     
     String nome = "Capeta Infernal";
-    int dano = 15;
-    int vida = 30;
+    int dano = 3;
+    int vida = 10;
+    String descricao = ("----------Capeta Infernal--------  \n" +
+"Uma entidade sombria que exala fogo e maldade. O Capeta Infernal e uma figura temida\n"
++ " nos contos mais antigos, com chifres retorcidos, olhos incandescentes e\n"
++ " um riso maligno que ecoa pelo ar. Ele manipula chamas e sombras para destruir\n"
++ " tudo em seu caminho, deixando apenas cinzas e desespero. Enfrenta-lo e como encarar\n"
++ " o proprio abismo: apenas os mais bravos ousam tentar.\n");
 }
