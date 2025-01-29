@@ -12,7 +12,7 @@ public class Inimigo1 {
     
     String nome = "Zumbi Louco";
     int dano = 2;
-    int vida = 2;
+    int vida = 10;
     String descricao = ("--------------Zumbi Louco--------------\n" +
 "Um inimigo imprevisivel e aterrorizante. Este zumbi nao segue nenhum padrao: corre, pula, grita\n"
 +"e se joga para cima de suas vitimas com uma energia descontrolada. Seus olhos brilhantes\n"

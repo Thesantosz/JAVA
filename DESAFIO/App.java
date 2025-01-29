@@ -616,7 +616,7 @@ if (caminhoEsc == 1) {
             danoBoss = ArmazenaVida - boss.dano;
             ArmazenaVida = danoBoss;
             System.out.println("");
-            System.out.println("O seu inimigo te atacou e causou " + boss.vida+" de dano");
+            System.out.println("O seu inimigo te atacou e causou " + boss.dano+" de dano");
             System.out.println("Agora voce esta com " + ArmazenaVida + " de vida!");
             System.out.println("");
             }

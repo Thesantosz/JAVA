@@ -12,7 +12,7 @@ public class Boss {
     
     String nome = "Capeta Infernal";
     int dano = 3;
-    int vida = 10;
+    int vida = 100;
     String descricao = ("----------Capeta Infernal--------  \n" +
 "Uma entidade sombria que exala fogo e maldade. O Capeta Infernal e uma figura temida\n"
 + " nos contos mais antigos, com chifres retorcidos, olhos incandescentes e\n"

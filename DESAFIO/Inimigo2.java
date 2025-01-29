@@ -13,7 +13,7 @@ public class Inimigo2 {
     
     String nome = "Gigante do Sul";
     int dano = 1;
-    int vida = 3;
+    int vida = 15;
     String descricao = ("--------Gigante do Sul---------  \n" +
 "Uma montanha de musculos e brutalidade que caminha \n"
 + "pela terra gelada. O Gigante do Sul e conhecido por sua forca \n"
