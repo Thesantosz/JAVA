@@ -34,7 +34,7 @@ public class App {
         
         switch(escolha) {
             
-            case 1: 
+case 1: 
                 System.out.println("Voce deseja qual tipo de produto?\n"
                         + "\n"
                         + "1. Comida\n"
@@ -52,35 +52,150 @@ public class App {
                     switch(escolhaComida){
                         
                         case 1: 
-                            carrinho.adicionar("1. Batata\n");
+                            carrinho.adicionar("- Carne \n");
                         break;
                         case 2:
-                            carrinho.adicionar("2.CEBOLA");
+                            carrinho.adicionar("- Patel\n");
+                        break;
+                        case 3:
+                            carrinho.adicionar("- Frango\n");
+                        break;
+                        case 4:
+                            carrinho.adicionar("- Arroz\n");
+                        break;
+                        case 5:
+                            carrinho.adicionar("- Feijao\n");
+                        break;
+                        case 6:
+                            carrinho.adicionar("- Batata\n");
                         break;
                     }
                 }else if(escolhaP == 2){
                     
-                    System.out.println(bebidas.Vizualizar());
+                    System.out.println(bebidas.exibicao());          
                     System.out.println("Qual voce deseja? ");
                     int escolhaBebida= scanner.nextInt();
                     
                     switch(escolhaBebida){
-                    case 1:
-                        carrinho.adicionar("1.REFRIGERANTE");
-                    break;
-                    case 2:
-                        carrinho.adicionar("2. Velho barrero");
+                    case 1: 
+                            carrinho.adicionar("- Vodka \n");
+                        break;
+                        case 2:
+                            carrinho.adicionar("- Iogurte\n");
+                        break;
+                        case 3:
+                            carrinho.adicionar("- Suco\n");
+                        break;
+                        case 4:
+                            carrinho.adicionar("- Refri\n");
+                        break;
+                        case 5:
+                            carrinho.adicionar("- Whisky\n");
+                        break;
+                        case 6:
+                            carrinho.adicionar("- Agua\n");
+                        break;
                     }
-                        };
+}              else if(escolhaP == 3){
+    
+                      System.out.println(eletronicos.exibicao());          
+                    System.out.println("Qual voce deseja? ");
+                    int escolhaEletronico= scanner.nextInt();
+                    
+                    switch(escolhaEletronico){
+                    
+    case 1: 
+        carrinho.adicionar("- Smartphone \n");
+        break;
+    case 2:
+        carrinho.adicionar("- Fone de Ouvido\n");
+        break;
+    case 3:
+        carrinho.adicionar("- Carregador Portátil\n");
+        break;
+    case 4:
+        carrinho.adicionar("- Smartwatch\n");
+        break;
+    case 5:
+        carrinho.adicionar("- Notebook\n");
+        break;
+    case 6:
+        carrinho.adicionar("- Câmera Digital\n");
+        break;
+}
+
+        } else if(escolhaP == 4){
+            
+            System.out.println(roupa.exibicao());          
+            System.out.println("Qual voce deseja? ");
+            int escolhaRoupa= scanner.nextInt();
+            switch(escolhaRoupa) {
+    case 1: 
+        carrinho.adicionar("- Camiseta \n");
+        break;
+    case 2:
+        carrinho.adicionar("- Calça Jeans\n");
+        break;
+    case 3:
+        carrinho.adicionar("- Jaqueta\n");
+        break;
+    case 4:
+        carrinho.adicionar("- Vestido\n");
+        break;
+    case 5:
+        carrinho.adicionar("- Sapato\n");
+        break;
+    case 6:
+        carrinho.adicionar("- Boné\n");
+        break;
+}
+
+        } else if(escolhaP == 5){
+            
+            System.out.println(utensilio.exibicao());          
+            System.out.println("Qual voce deseja? ");
+            int escolhaUtensilio= scanner.nextInt();
+            switch(escolhaUtensilio) {
+    case 1: 
+        carrinho.adicionar("- Panela \n");
+        break;
+    case 2:
+        carrinho.adicionar("- Prato\n");
+        break;
+    case 3:
+        carrinho.adicionar("- Copo\n");
+        break;
+    case 4:
+        carrinho.adicionar("- Talheres\n");
+        break;
+    case 5:
+        carrinho.adicionar("- Cadeira\n");
+        break;
+    case 6:
+        carrinho.adicionar("- Tábua de Corte\n");
+        break;
+}
+
+        } else{
+            System.out.println("ESCOLHA UMA OPCAO VALIDA!");
+        }
                         
 break;
             case 2:
-                System.out.println("rEMOVER");
+                carrinho.remover();
                 break;
                         
                         case 3:
-                            carrinho.exibirCarrinho();
+                            carrinho.vizualizar();
                             break;
+                        case 4:
+                            carrinho.pagamento();
+                            break;
+                        case 5:
+                            System.out.println("SAINDO...");
+                            
+                          pagamento = true;
+                          break;
                             
                         
         

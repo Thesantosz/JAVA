@@ -14,15 +14,16 @@ public class Bebidas {
  
   
 
-    public String Vizualizar(){
+    public String exibicao(){
         
-         String catalogo = ("1. Vodka\n"
-                 + "2. Iogurte -- R$8\n" +
-                 "3. Suco -- R$4\n" 
-                 + "4. Refri -- R$\n"
-                 + "5. Whisky\n"
-                 + "6. Agua");
-        return catalogo;
+         String catalogo = ("1. Vodka       Preco: R$18.00\n"
+            + "2. Iogurte      Preco:    R$8.00\n"
+            + "3. Suco      Preco:  R$4.00\n"
+            + "4. Refri      Preco: R$12.00\n"
+            + "5. Whisky        Preco: RS 82.00\n"
+            + "6. Agua       Preco: R$3.00");
+         
+                 return catalogo;
     //int[] preço = {23, 8, 6, 12, 98, 3};
 
     };

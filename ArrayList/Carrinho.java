@@ -22,7 +22,7 @@ public class Carrinho {
     }
 
     // Método para exibir os produtos no carrinho
-    public void exibirCarrinho() {
+    public void vizualizar() {
         if (carrinhoP.isEmpty()) {
             System.out.println("O carrinho está vazio.");
         } else {
@@ -32,4 +32,16 @@ public class Carrinho {
             }
         }
     }
-}
+        
+        public void remover(){
+        System.out.println("Remocao");
+        };
+        
+        public void pagamento(){
+            System.out.println("PAGAMENTO");
+        };
+        
+    };
+
+
+
