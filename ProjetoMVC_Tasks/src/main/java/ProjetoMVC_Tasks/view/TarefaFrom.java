@@ -5,6 +5,7 @@
 package ProjetoMVC_Tasks.view;
 
 import ProjetoMVC_Tasks.controller.TarefaController;
+import ProjetoMVC_Tasks.model.TarefaDAO;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JCheckBox;
@@ -19,6 +20,7 @@ public class TarefaFrom extends javax.swing.JFrame {
     private DefaultListModel<String> modeloLista;
     
     private ArrayList<JCheckBox> listaCheckBox = new ArrayList<>();
+    private ArrayList<Integer> listaIds; 
     
 
     /**
@@ -167,11 +169,14 @@ public class TarefaFrom extends javax.swing.JFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
         
-             String titulo = txtTitulo.getText();
+      
+         
+        String titulo = txtTitulo.getText();
         String data = txtDataVencimento.getText();
         String descricao = txtDescricao.getText();
         String status = "pendente";
         String mensagemLista = ("Tarefa: " + titulo + " || Dia do vencimento: " + data + " || Descricao: "+ descricao + " || Status: " + status);
+        
         
         modeloLista.addElement(mensagemLista);
         
@@ -187,10 +192,15 @@ public class TarefaFrom extends javax.swing.JFrame {
         String newTitulo = txtTitulo.getText();
         String newData = txtDataVencimento.getText();
         String newDescricao = txtDescricao.getText();
-        int id; //click da pessoa na lista de qual vai atualizar  gettSelectIndex(
+        String newStatus = "pendente";
+        int newId = painelLista.getSelectedIndex();
+        String mensagemLista = ("Tarefa: " + newTitulo + " || Dia do vencimento: " + newData + " || Descricao: "+ newDescricao + " || Status: " + newStatus);
+        modeloLista.set(newId, mensagemLista);
         
-        String mensagemAtualizado = TarefaController.atualizarTarefa(newTitulo, newData, newDescricao, id);
-        JOptionPane.showMessageDialog(this, mensagemAtualizada);
+        
+
+        String mensagemAtualizado = TarefaController.atualizarTarefa(newTitulo, newData, newDescricao, newId);
+        JOptionPane.showMessageDialog(this, mensagemAtualizado);
         
         
     }//GEN-LAST:event_btnAtualizarActionPerformed

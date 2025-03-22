@@ -29,7 +29,7 @@ return "Erro:" + e.getMessage();
 }
     }
     
-    public static void atualizarTarefa(String novoTitulo, String novaDescricao, String novaData, int id){
+    public static String atualizarTarefa(String novoTitulo, String novaDescricao, String novaData, int id){
         
         try{
           TarefaDAO novaTarefa = new TarefaDAO();
@@ -42,7 +42,11 @@ return "Erro:" + e.getMessage();
                 System.out.println("Erro ao atualizar usuário: " + e.getMessage());
             }
         
-        }
+        return
+                "tarefa atualizada";
     
-    }
+        
+} //atualizar tarefa
+} //end
+    
 

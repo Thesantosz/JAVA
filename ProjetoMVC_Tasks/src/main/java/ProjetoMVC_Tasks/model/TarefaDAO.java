@@ -6,6 +6,7 @@ package ProjetoMVC_Tasks.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -15,43 +16,61 @@ import javax.swing.JOptionPane;
  * @author LEANDROHENRIQUESANTO
  */
 public class TarefaDAO {
+
+    public static void adicionarTarefa() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     private Connection conexao;
 
-    private static ArrayList<TarefaDAO> tarefaBanco = new ArrayList();
+    private static ArrayList<TarefaDAO> idBanco = new ArrayList();
     
     public TarefaDAO() {
         this.conexao = ConexaoSQLite.conectar();
     }
     
-    public void adicionarTarefa(Tarefa tarefa){
+    public int adicionarTarefa(Tarefa tarefa) {
+    String sql = "INSERT INTO tarefas(titulo, descricao, data_vencimento, status) VALUES (?, ?, ?, ?)";
+    int idGerado = -1; // Inicializa a variável antes do try
+
+    try (PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
         
-        String sql = "INSERT INTO tarefas(titulo, descricao, data_vencimento, status) VALUES (?, ?, ?, ?)";
-        
-        try(PreparedStatement stmt = conexao.prepareStatement(sql)){
-            
         stmt.setString(1, tarefa.getTitulo());
         stmt.setString(2, tarefa.getDescricao());
         stmt.setString(3, tarefa.getData_vencimento());
         stmt.setString(4, "pendente");
         
-        stmt.executeUpdate();
-
+       
         
+
+        int linhasAfetadas = stmt.executeUpdate();
+
+        if (linhasAfetadas > 0) {
+            ResultSet rs = stmt.getGeneratedKeys(); // Obtém o ID gerado
+            if (rs.next()) {
+                idGerado = rs.getInt(1); // ✅ Agora idGerado pode ser usado no return
+            }
+        }
+
     } catch (SQLException e) {
-        // Se ocorrer um erro
-        JOptionPane.showMessageDialog(null, "Erro ao adicionar livro: " + e.getMessage());
+        e.printStackTrace();
     }
-    }
+
+    return idGerado; 
+    
+    
+}
+
+
     
    public void atualizarTarefa(String novoTitulo, String novaDescricao, String novaData, int id) {
         
         // A string SQL que vai realizar a atualização. 
         // A cláusula WHERE é usada para especificar qual usuário será atualizado com base no ID.
-        String sql = "UPDATE tarefas "
+        String sql = "UPDATE tarefas" 
                 + "SET titulo = ?,"
-                + " descricao = ?"
-                + "data_vencimento = ?"
-                + " WHERE id = ?";
+                + " descricao = ?, "
+                + "data_vencimento = ?" +
+                   "WHERE id = ?";
 
         try {
             // Cria um PreparedStatement para executar o SQL com parâmetros.
@@ -92,6 +111,7 @@ public class TarefaDAO {
             // ele é capturado aqui. A mensagem do erro é impressa.
             System.out.println("Erro ao conectar ou executar SQL: " + e.getMessage());
         }
-    }
-}
+    } //atualizar
 
+
+}//classe
