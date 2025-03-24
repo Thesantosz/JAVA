@@ -6,6 +6,7 @@ package ProjetoMVC_Tasks.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -15,30 +16,133 @@ import javax.swing.JOptionPane;
  * @author LEANDROHENRIQUESANTO
  */
 public class TarefaDAO {
+
+    public static void adicionarTarefa() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     private Connection conexao;
 
-    private static ArrayList<TarefaDAO> tarefaBanco = new ArrayList();
+    private static ArrayList<TarefaDAO> idBanco = new ArrayList();
+    
     public TarefaDAO() {
         this.conexao = ConexaoSQLite.conectar();
     }
     
-    public void adicionarTarefa(Tarefa tarefa){
+    public int adicionarTarefa(Tarefa tarefa) {
+    String sql = "INSERT INTO tarefas(titulo, descricao, data_vencimento, status) VALUES (?, ?, ?, ?)";
+    int idGerado = -1; // Inicializa a variável antes do try
+
+    try (PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
         
-        String sql = "INSERT INTO tarefas(titulo, descricao, data_vencimento) VALUES (?, ?, ?)";
-        
-        try(PreparedStatement stmt = conexao.prepareStatement(sql)){
-            
         stmt.setString(1, tarefa.getTitulo());
         stmt.setString(2, tarefa.getDescricao());
-        stmt.setInt(3, tarefa.getData_vencimento());
+        stmt.setString(3, tarefa.getData_vencimento());
+        stmt.setString(4, "pendente");
         
-        stmt.executeUpdate();
+       
         
-        JOptionPane.showMessageDialog(null, "Tarefa cadastrada com sucesso!");
-        
+
+        int linhasAfetadas = stmt.executeUpdate();
+
+        if (linhasAfetadas > 0) {
+            ResultSet rs = stmt.getGeneratedKeys(); // Obtém o ID gerado
+            if (rs.next()) {
+                idGerado = rs.getInt(1); // ✅ Agora idGerado pode ser usado no return
+            }
+        }
+
     } catch (SQLException e) {
-        // Se ocorrer um erro
-        JOptionPane.showMessageDialog(null, "Erro ao adicionar livro: " + e.getMessage());
+        e.printStackTrace();
     }
+
+    return idGerado; 
+    
+    
 }
-}
+
+
+    
+   public void atualizarTarefa(String novoTitulo, String novaDescricao, String novaData, int id) {
+        
+        // A string SQL que vai realizar a atualização. 
+        // A cláusula WHERE é usada para especificar qual usuário será atualizado com base no ID.
+        String sql = "UPDATE tarefas" 
+                + "SET titulo = ?,"
+                + " descricao = ?, "
+                + "data_vencimento = ?" +
+                   "WHERE id = ?";
+
+        try {
+            // Cria um PreparedStatement para executar o SQL com parâmetros.
+            // O PreparedStatement ajuda a prevenir ataques de SQL Injection, 
+            //já que os valores dos parâmetros são definidos separadamente.
+            try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
+                
+                // Substitui o primeiro parâmetro (?) com o novo nome fornecido.
+                pstmt.setString(1, novoTitulo);
+                
+                // Substitui o segundo parâmetro (?) com o novo email fornecido.
+                pstmt.setString(2, novaDescricao);
+                
+                // Substitui o terceiro parâmetro (?) com o ID do usuário para identificar qual usuário atualizar.
+                pstmt.setString(3, novaData);
+                
+                pstmt.setInt(4, id);
+                
+                // Executa o comando SQL e retorna o número de linhas afetadas pela operação.
+                int rowsUpdated = pstmt.executeUpdate();
+
+                // Verifica se pelo menos uma linha foi atualizada.
+                if  (rowsUpdated > 0) {
+                    // Se a atualização foi bem-sucedida, imprime a mensagem de sucesso.
+                    System.out.println("Tarefa atualizada com sucesso!");
+                } else {
+                    // Se nenhuma linha foi atualizada (significa que o ID fornecido não foi encontrado), imprime uma mensagem.
+                    System.out.println("Nenhuma Tarefa encontrado!");
+                }
+            } catch (Exception e) {
+                // Caso ocorra algum erro durante a execução do PreparedStatement, 
+                // ele é capturado aqui.
+                // O erro é impresso com uma mensagem explicativa.
+                System.out.println("Erro ao atualizar tarefa: " + e.getMessage());
+            }
+        } catch (Exception e) {
+            // Caso ocorra um erro ao tentar preparar ou executar a instrução SQL, 
+            // ele é capturado aqui. A mensagem do erro é impressa.
+            System.out.println("Erro ao conectar ou executar SQL: " + e.getMessage());
+        }
+    } //atualizar
+   
+   public int deletarTarefa( int id) {
+        
+        // Comando SQL para deletar um usuário da tabela 'usuarios' com base no ID
+        String sql = "DELETE FROM tarefas WHERE id = ?";
+        
+        // Bloco try-with-resources para garantir que o PreparedStatement seja fechado automaticamente
+        try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
+            
+            // Define o valor do parâmetro '?' no SQL como o ID do usuário passado no método
+            pstmt.setInt(1, id);
+            
+            // Executa a atualização (DELETE) no banco de dados e armazena o número de linhas afetadas
+            int rowsDeleted = pstmt.executeUpdate();
+            
+            // Verifica se alguma linha foi deletada
+            if (rowsDeleted > 0) { 
+                // Se pelo menos um usuário foi deletado, exibe uma mensagem de sucesso
+                System.out.println("Tarefa deletado com sucesso!");
+            } else {
+                // Caso contrário, informa que nenhum usuário foi encontrado com o ID fornecido
+                System.out.println("Nenhuma tarefa encontrado com o ID fornecido.");
+            }
+        } catch (Exception e) {
+            // Captura qualquer exceção que ocorra durante a execução do código e exibe a mensagem de erro
+            System.out.println("Erro ao deletar tarefa: " + e.getMessage());
+        }
+        return id;
+    }
+
+   
+
+
+}//classe

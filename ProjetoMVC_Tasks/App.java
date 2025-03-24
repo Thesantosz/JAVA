@@ -5,6 +5,7 @@ package ProjetoMVC_Tasks;
 
 import ProjetoMVC_Tasks.model.ConexaoSQLite;
 import ProjetoMVC_Tasks.model.CriarTabela;
+import ProjetoMVC_Tasks.view.TarefaFrom;
 import java.sql.Connection;
 
 public class App {
@@ -13,7 +14,7 @@ public class App {
         Connection conexao = ConexaoSQLite.conectar();
         CriarTabela.criarTabelaTarefas(conexao); 
         
-        
+        new TarefaFrom().setVisible(true);
     
 }
 }

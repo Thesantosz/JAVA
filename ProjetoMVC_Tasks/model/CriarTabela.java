@@ -15,11 +15,12 @@ public class CriarTabela {
     // Método que cria a tabela 'usuarios' no banco de dados
     public static void criarTabelaTarefas(Connection conexao) {
         // Cria uma string contendo o comando SQL para criar a tabela, se não existir
-        String sql = "CREATE TABLE IF NOT EXISTS tarefas (" 
+        String sql = "CREATE TABLE IF NOT EXISTS Tarefas (" 
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, " // Coluna 'id' como chave primária com autoincremento
                 + "titulo TEXT NOT NULL, " // Coluna 'nome' do tipo TEXT, obrigatório (NOT NULL)
                 + "descricao TEXT,"
-                + "data_vencimento DATE)"; // Coluna 'senha' do tipo TEXT, obrigatório (NOT NULL)
+                + "data_vencimento TEXT,"
+                + "status TEXT)"; // Coluna 'senha' do tipo TEXT, obrigatório (NOT NULL)
         
         // Bloco try and catch para garantir o fechamento do Statement após a execução
         try (Statement stmt = conexao.createStatement()) {  //STATEMENT - 

@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 public class TarefaFrom extends javax.swing.JFrame {
 
     private DefaultListModel<String> modeloLista;
-    
     private ArrayList<JCheckBox> listaCheckBox = new ArrayList<>();
     private ArrayList<Integer> listaIds; 
     
@@ -97,6 +96,11 @@ public class TarefaFrom extends javax.swing.JFrame {
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(painelLista);
 
@@ -167,10 +171,7 @@ public class TarefaFrom extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        // TODO add your handling code here:
-        
-      
-         
+        // TODO add your handling code here: 
         String titulo = txtTitulo.getText();
         String data = txtDataVencimento.getText();
         String descricao = txtDescricao.getText();
@@ -193,9 +194,9 @@ public class TarefaFrom extends javax.swing.JFrame {
         String newData = txtDataVencimento.getText();
         String newDescricao = txtDescricao.getText();
         String newStatus = "pendente";
-        int newId = painelLista.getSelectedIndex();
+        int newId = painelLista.getSelectedIndex(); //valor do lugar da lista
         String mensagemLista = ("Tarefa: " + newTitulo + " || Dia do vencimento: " + newData + " || Descricao: "+ newDescricao + " || Status: " + newStatus);
-        modeloLista.set(newId, mensagemLista);
+        modeloLista.set(newId, mensagemLista); 
         
         
 
@@ -208,6 +209,16 @@ public class TarefaFrom extends javax.swing.JFrame {
     private void btnAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtualizarMouseClicked
         
     }//GEN-LAST:event_btnAtualizarMouseClicked
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+   int idDelet = painelLista.getSelectedIndex();
+   modeloLista.remove(idDelet);
+   
+  String deletado = TarefaController.deletarTarefa(idDelet);
+JOptionPane.showMessageDialog(this, deletado);
+   
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments

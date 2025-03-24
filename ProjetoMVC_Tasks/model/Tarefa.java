@@ -13,15 +13,14 @@ public class Tarefa {
     private int id;
     private String titulo;
     private String descricao;
-    private int data_vencimento;
-    private String status;
+    private String data_vencimento;
 
     // Construtor
-    public Tarefa( String titulo, String descricao, int data_vencimento, String status) {
+    public Tarefa( String titulo, String descricao, String data_vencimento) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.data_vencimento = data_vencimento;
-        this.status = status;
+
     }
 
     // Métodos Getters e Setters para acessar os atributos
@@ -49,21 +48,12 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public int getData_vencimento() {
+    public String getData_vencimento() {
         return data_vencimento;
     }
 
-    public void setData_vencimento(int data_vencimento) {
+    public void setData_vencimento(String data_vencimento) {
         this.data_vencimento = data_vencimento;
     }
-    
-        public String getStatus() {
-        return status;
-        }
-        
-        public void setStatus(String status){
-            this.status = status;
-        }
-        
         
 }

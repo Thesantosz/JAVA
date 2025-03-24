@@ -44,9 +44,25 @@ return "Erro:" + e.getMessage();
         
         return
                 "tarefa atualizada";
-    
-        
 } //atualizar tarefa
+    
+     public static String deletarTarefa(int id){
+    try {
+        TarefaDAO novaTarefa = new TarefaDAO();
+        int resultado = novaTarefa.deletarTarefa(id); // ✅ Agora capturamos o retorno corretamente
+
+        if (resultado > 0) {
+            return "Tarefa deletada com sucesso!";
+        } else {
+            return "Nenhuma tarefa encontrada com esse ID.";
+        }
+    } catch (Exception e) {
+        System.out.println("Erro ao deletar tarefa: " + e.getMessage());
+        return "Erro ao deletar tarefa.";
+    }
+}
+
+
 } //end
     
 
