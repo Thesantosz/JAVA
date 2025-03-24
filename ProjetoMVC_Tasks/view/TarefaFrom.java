@@ -4,17 +4,36 @@
  */
 package ProjetoMVC_Tasks.view;
 
+import ProjetoMVC_Tasks.controller.TarefaController;
+import ProjetoMVC_Tasks.model.TarefaDAO;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author LEANDROHENRIQUESANTO
  */
 public class TarefaFrom extends javax.swing.JFrame {
 
+    private DefaultListModel<String> modeloLista;
+    
+    private ArrayList<JCheckBox> listaCheckBox = new ArrayList<>();
+    private ArrayList<Integer> listaIds; 
+    
+
     /**
      * Creates new form TarefaFrom
      */
     public TarefaFrom() {
         initComponents();
+        
+        TarefaController tarefacontroller = new  TarefaController();
+
+        modeloLista = new DefaultListModel<>();
+        painelLista.setModel(modeloLista);
+    
     }
 
     /**
@@ -33,11 +52,12 @@ public class TarefaFrom extends javax.swing.JFrame {
         lbDataVencimento = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDescricao = new javax.swing.JTextArea();
-        checkListar = new javax.swing.JCheckBox();
         lbDescricao = new javax.swing.JLabel();
         btnAdicionar = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        painelLista = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,15 +75,6 @@ public class TarefaFrom extends javax.swing.JFrame {
         txtDescricao.setRows(5);
         jScrollPane2.setViewportView(txtDescricao);
 
-        checkListar.setBackground(new java.awt.Color(51, 51, 51));
-        checkListar.setForeground(new java.awt.Color(255, 255, 255));
-        checkListar.setText("Lavar Louça\n"); // NOI18N
-        checkListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkListarActionPerformed(evt);
-            }
-        });
-
         lbDescricao.setText("Descrição");
 
         btnAdicionar.setText("Adicionar");
@@ -74,40 +85,57 @@ public class TarefaFrom extends javax.swing.JFrame {
         });
 
         btnAtualizar.setText("Atualizar");
+        btnAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAtualizarMouseClicked(evt);
+            }
+        });
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
+
+        jScrollPane1.setViewportView(painelLista);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtTitulo)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(99, 99, 99)
-                            .addComponent(lbTitulo))
-                        .addComponent(txtDataVencimento, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(75, 75, 75)
-                            .addComponent(lbDataVencimento)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbDescricao)
-                        .addGap(93, 93, 93)))
-                .addGap(18, 18, 18)
-                .addComponent(checkListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtTitulo, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(99, 99, 99)
+                                        .addComponent(lbTitulo))
+                                    .addComponent(txtDataVencimento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(75, 75, 75)
+                                        .addComponent(lbDataVencimento))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbDescricao)
+                                        .addGap(93, 93, 93))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +154,7 @@ public class TarefaFrom extends javax.swing.JFrame {
                         .addComponent(lbDescricao)
                         .addGap(8, 8, 8)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(checkListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionar)
@@ -138,17 +166,48 @@ public class TarefaFrom extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void checkListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkListarActionPerformed
-        
-    }//GEN-LAST:event_checkListarActionPerformed
-
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
+        
+      
+         
+        String titulo = txtTitulo.getText();
+        String data = txtDataVencimento.getText();
+        String descricao = txtDescricao.getText();
+        String status = "pendente";
+        String mensagemLista = ("Tarefa: " + titulo + " || Dia do vencimento: " + data + " || Descricao: "+ descricao + " || Status: " + status);
+        
+        
+        modeloLista.addElement(mensagemLista);
+        
+        String mensagem = TarefaController.adicionarTarefa(titulo, descricao, data, status);  
+        JOptionPane.showMessageDialog(this, mensagem);
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTituloActionPerformed
+
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        String newTitulo = txtTitulo.getText();
+        String newData = txtDataVencimento.getText();
+        String newDescricao = txtDescricao.getText();
+        String newStatus = "pendente";
+        int newId = painelLista.getSelectedIndex();
+        String mensagemLista = ("Tarefa: " + newTitulo + " || Dia do vencimento: " + newData + " || Descricao: "+ newDescricao + " || Status: " + newStatus);
+        modeloLista.set(newId, mensagemLista);
+        
+        
+
+        String mensagemAtualizado = TarefaController.atualizarTarefa(newTitulo, newData, newDescricao, newId);
+        JOptionPane.showMessageDialog(this, mensagemAtualizado);
+        
+        
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtualizarMouseClicked
+        
+    }//GEN-LAST:event_btnAtualizarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -190,11 +249,12 @@ public class TarefaFrom extends javax.swing.JFrame {
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JCheckBox checkListar;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbDataVencimento;
     private javax.swing.JLabel lbDescricao;
     private javax.swing.JLabel lbTitulo;
+    private javax.swing.JList<String> painelLista;
     private javax.swing.JTextField txtDataVencimento;
     private javax.swing.JTextArea txtDescricao;
     private javax.swing.JTextField txtTitulo;
