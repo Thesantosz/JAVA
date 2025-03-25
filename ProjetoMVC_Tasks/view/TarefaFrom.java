@@ -57,6 +57,7 @@ public class TarefaFrom extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         painelLista = new javax.swing.JList<>();
+        btnConcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,6 +105,13 @@ public class TarefaFrom extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(painelLista);
 
+        btnConcluir.setText("Concluir Tarefa");
+        btnConcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,7 +146,11 @@ public class TarefaFrom extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(btnConcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
@@ -164,7 +176,9 @@ public class TarefaFrom extends javax.swing.JFrame {
                     .addComponent(btnAdicionar)
                     .addComponent(btnAtualizar)
                     .addComponent(btnExcluir))
-                .addGap(0, 35, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConcluir)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -220,6 +234,11 @@ JOptionPane.showMessageDialog(this, deletado);
         
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void btnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirActionPerformed
+      
+         
+    }//GEN-LAST:event_btnConcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +277,7 @@ JOptionPane.showMessageDialog(this, deletado);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnAtualizar;
+    private javax.swing.JButton btnConcluir;
     private javax.swing.JButton btnExcluir;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JScrollPane jScrollPane1;

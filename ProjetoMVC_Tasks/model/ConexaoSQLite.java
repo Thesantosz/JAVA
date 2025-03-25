@@ -16,7 +16,8 @@ public class ConexaoSQLite {
      // Método para conectar ao banco de dados
     public static Connection conectar() {
         Connection conexao = null; // Declara uma variável para armazenar a conexão
-        String url = "jdbc:sqlite:DesafiioTarefas.db"; // Define o caminho do banco de dados SQLite
+        String url = "jdbc:sqlite:DesafioTarefas.db"; 
+ // Define o caminho do banco de dados SQLite
         
         try {
             // Tenta estabelecer a conexão com o banco de dados usando a URL fornecida
