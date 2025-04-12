@@ -24,8 +24,10 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
 
-// Dependência do SQLite JDBC (adicionada manualmente)
-    implementation files('src/main/java/ProjetoMVC_Tasks/model/sqlite-jdbc-3.47.1.0.jar')
+implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
+    implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
+    implementation 'io.github.cdimascio:dotenv-java:2.2.4'
+
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -37,7 +39,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'ProjetoMVC_Tasks.App'
+    mainClass = 'hash.App'
 }
 
 tasks.named('test') {
