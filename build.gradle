@@ -21,13 +21,13 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    // This dependency is used by the application.
-    implementation 'com.google.guava:guava:31.1-jre'
 
 implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
-    implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
-    implementation 'io.github.cdimascio:dotenv-java:2.2.4'
+implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
+implementation 'io.github.cdimascio:dotenv-java:2.2.4'
 
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:31.1-jre'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -39,7 +39,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'hash.App'
+    mainClass = 'superMarket.App'
 }
 
 tasks.named('test') {
