@@ -12,10 +12,10 @@ public class Products{
     
     int id;
     String name;
-    int value;
-    int units;
+    String value;
+    String units;
 
-    public Products(String name, int value, int units) {
+    public Products(String name, String value, String units) {
         this.name = name;
         this.value = value;
         this.units = units;
@@ -37,19 +37,20 @@ public class Products{
         this.name = name;
     }
 
-    public int getValue() {
+  public String getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
-    public int getUnits() {
+
+    public String getUnits() {
         return units;
     }
 
-    public void setUnits(int units) {
+    public void setUnits(String units) {
         this.units = units;
     }
     

@@ -5,6 +5,7 @@
 package superMarket.view;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import superMarket.Controller.ProductController;
 
 /**
@@ -14,6 +15,7 @@ import superMarket.Controller.ProductController;
 public class telaCompras extends javax.swing.JFrame {
 
         private DefaultListModel<String> modelList;
+         private DefaultListModel<String> modelCar;
     /**
      * Creates new form telaCompras
      */
@@ -24,6 +26,9 @@ public class telaCompras extends javax.swing.JFrame {
 
         modelList = new DefaultListModel<>();
         panelList.setModel(modelList);
+        
+        modelCar = new DefaultListModel<>();
+        panelCar.setModel(modelCar);
     }
 
     /**
@@ -79,6 +84,11 @@ public class telaCompras extends javax.swing.JFrame {
         });
 
         btnRev.setText("Remover");
+        btnRev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRevActionPerformed(evt);
+            }
+        });
 
         btnBuy.setText("Comprar");
         btnBuy.addActionListener(new java.awt.event.ActionListener() {
@@ -204,15 +214,21 @@ public class telaCompras extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
-        String name = txtName.getText();
-        String value = txtValue.getText();
-        String units = txtUnits.getText();
-        
-        String mensagemLista = ("Nome: " + name + " || Valor: " + value + " || Unidades: "+ units );
-        
-        
-        modelList.addElement(mensagemLista);
+                                          
+    String name = txtName.getText();
+    String value = txtValue.getText();
+    String units = txtUnits.getText();
+
+    String mensagemLista = ("Nome: " + name + " || Valor: " + value + " || Unidades: "+ units );
+ 
+    // Adicionar produto à lista
+    modelList.addElement(mensagemLista);
+    
+    // Chamar o controlador para adicionar o produto no banco ou processamento
+    String mensagem = ProductController.addProduct(name, value, units);  
+    JOptionPane.showMessageDialog(this, mensagem);
+
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void txtUnitsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnitsActionPerformed
@@ -221,9 +237,16 @@ public class telaCompras extends javax.swing.JFrame {
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
         String prod = panelList.getSelectedValue();
-        
-        modelList.addElement(prod); //criar outro listmodel
+        modelCar.addElement(prod); //criar outro listmodel
     }//GEN-LAST:event_btnBuyActionPerformed
+
+    private void btnRevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevActionPerformed
+         int idDelet = panelCar.getSelectedIndex();
+   modelCar.remove(idDelet);
+   
+  String deletado = ProductController.revProduct(idDelet);
+JOptionPane.showMessageDialog(this, deletado);
+    }//GEN-LAST:event_btnRevActionPerformed
 
     /**
      * @param args the command line arguments

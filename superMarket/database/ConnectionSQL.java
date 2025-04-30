@@ -45,8 +45,8 @@ public class ConnectionSQL {
             String sql = "  CREATE TABLE IF NOT EXISTS products("
                     + "id INT AUTO_INCREMENT PRIMARY KEY, "
                     + "name VARCHAR(225) NOT NULL UNIQUE,"
-                    + "value DECIMAL(10,2) NOT NULL,"
-                    + "units VARCHAR(255) NOT NULL)";
+                    + "value VARCHAR(100) NOT NULL,"
+                    + "units VARCHAR(100) NOT NULL)";
             
             try(Statement stmt = connection.createStatement()){
                 stmt.execute(sql);
