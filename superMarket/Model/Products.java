@@ -52,10 +52,9 @@ public class Products{
 
     public void setUnits(String units) {
         this.units = units;
-    }
+    }    
     
     
     
     
-    
-}
+} 

@@ -3,8 +3,7 @@
  */
 package superMarket;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+
 import superMarket.database.ConnectionSQL;
 import superMarket.view.telaCompras;
 
@@ -13,7 +12,9 @@ public class App {
         public static void main(String[] args){
             
         try{
-            Connection conexao = ConnectionSQL.conectar();
+            ConnectionSQL.connected();
+            
+         
         } catch (Exception e){
             System.out.println("Erro ao criar o banco!" + e.getMessage());
         }

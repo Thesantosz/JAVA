@@ -4,6 +4,7 @@
  */
 package superMarket.database;
 
+
 import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,7 +25,7 @@ public class ConnectionSQL {
     private static final String DB_USER = dotenv.get("DB_USER");
     private static final String DB_PASSWORD = dotenv.get("DB_PASSWORD");
 
-    public static Connection conectar() {
+    public static Connection connected() {
         try {
             if (connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(URL, DB_USER, DB_PASSWORD);
@@ -55,4 +56,3 @@ public class ConnectionSQL {
 }
     }
     }
-
